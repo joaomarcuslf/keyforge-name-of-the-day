@@ -11,7 +11,10 @@ build:
 
 start-service:
 	docker build . -t keyforge-name-of-the-day
-	docker run --name keyforge-name-of-the-day \
+	docker run -d --name keyforge-name-of-the-day \
 		-p 5001:5001 \
 		--restart=always \
 		keyforge-name-of-the-day
+
+stop-service:
+	docker stop keyforge-name-of-the-day
