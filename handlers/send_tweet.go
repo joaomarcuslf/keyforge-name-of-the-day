@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joaomarcuslf/keyforge-name-of-the-day/clients"
 	"github.com/joaomarcuslf/keyforge-name-of-the-day/usecases"
 )
 
@@ -19,16 +20,16 @@ func SendTweet(c *gin.Context) {
 		panic(err)
 	}
 
-	// twitterClient := clients.NewTwitterClient()
-	// twitterClient.Init()
+	twitterClient := clients.NewTwitterClient()
+	twitterClient.Init()
 
-	// message := "The name of the day is " + kfr.Name + "! #Keyforge #KeyforgeNameOfTheDay"
+	message := "The name of the day is " + kfr.Name + "! #Keyforge #KeyforgeNameOfTheDay"
 
-	// for _, house := range kfr.Links.Houses {
-	// 	message += " #" + house
-	// }
+	for _, house := range kfr.Links.Houses {
+		message += " #" + house
+	}
 
-	// twitterClient.SendTweet(message)
+	twitterClient.SendTweet(message)
 
 	c.JSON(
 		http.StatusOK,
