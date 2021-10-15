@@ -10,6 +10,7 @@ build:
 	go build main.go
 
 start-service:
+	docker rm keyforge-name-of-the-day
 	docker build . -t keyforge-name-of-the-day
 	docker run -d --name keyforge-name-of-the-day \
 		-p 5001:5001 \
@@ -18,3 +19,4 @@ start-service:
 
 stop-service:
 	docker stop keyforge-name-of-the-day
+	docker rm keyforge-name-of-the-day
