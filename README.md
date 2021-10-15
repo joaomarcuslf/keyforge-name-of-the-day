@@ -13,7 +13,7 @@
 Or, you can run by doing this:
 
 ```sh
-go run main.go
+make dev
 ```
 
 You must set the Twitter tokens.
@@ -21,12 +21,8 @@ You must set the Twitter tokens.
 ## Running Tests
 
 ```sh
-go test -cover ./...
+make test
 ```
-
-## Deploying
-
-On pushing to `main`, it will automatically push to heroku
 
 ## Collaborators
 

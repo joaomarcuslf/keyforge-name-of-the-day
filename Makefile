@@ -1,13 +1,17 @@
 GO_BUILD_ENV := CGO_ENABLED=0 GOOS=linux GOARCH=amd64
-DOCKER_BUILD=$(shell pwd)/.docker_build
-DOCKER_CMD=$(DOCKER_BUILD)/keyforge-name-of-the-day
 
-$(DOCKER_CMD): clean
-	mkdir -p $(DOCKER_BUILD)
-	$(GO_BUILD_ENV) go build -v -o $(DOCKER_CMD) .
+dev:
+	go run main.go
 
-clean:
-	rm -rf $(DOCKER_BUILD)
+test:
+	go test -cover ./...
 
-heroku: $(DOCKER_CMD)
-	heroku container:push web
+build:
+	go build main.go
+
+start-service:
+	docker build . -t keyforge-name-of-the-day
+	docker run --name keyforge-name-of-the-day \
+		-p 5001:5001 \
+		--restart=always \
+		keyforge-name-of-the-day

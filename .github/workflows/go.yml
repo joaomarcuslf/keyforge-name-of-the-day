@@ -35,15 +35,8 @@ jobs:
 
       - name: Run build 👀
         run: |
-          go build main.go
+          make build
 
       - name: Run tests 🧪
         run: |
-          go test -cover ./...
-
-      # - name: Deploy to Heroku ⚛️
-      #   uses: akhileshns/heroku-deploy@v3.12.12
-      #   with:
-      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #     heroku_app_name: ${{secrets.APP_NAME}}
-      #     heroku_email: ${{secrets.HEROKU_EMAIL}}
+          make test
