@@ -32,7 +32,8 @@ type KFRDeck struct {
 	SetEraCards map[string]interface{} `json:"set_era_cards"`
 	ShardsBonus interface{}            `json:"shards_bonus"`
 
-	Links KFRLinks `json:"_links"`
+	Links    KFRLinks `json:"_links"`
+	TweetUrl string   `json:"tweet_url"`
 }
 
 type KFRLinks struct {

@@ -27,7 +27,17 @@ func SendTweet() (KFRDeck, error) {
 		message += " #" + strings.Replace(house, " ", "_", -1)
 	}
 
-	twitterClient.SendTweet(message)
+	tweet, response, err := twitterClient.SendTweet(message)
+
+	if err != nil {
+		return KFRDeck{}, err
+	}
+
+	if response.StatusCode != 200 {
+		return KFRDeck{}, err
+	}
+
+	kfr.TweetUrl = "https://twitter.com/KFDeckEveryday/status/" + tweet.IDStr
 
 	return kfr, nil
 }
